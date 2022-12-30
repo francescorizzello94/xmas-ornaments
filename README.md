@@ -2,6 +2,8 @@
 
 Controllable pair of Christmas balls built with Threejs and dat.gui.
 
+Check out the [full live coding video here](https://youtu.be/RcDv28zRrhE).
+
 Particularly interesting about this code is the use of the Raycaster object to focus the event listeners on the individual ornament object.
 
 Merry Christmas!

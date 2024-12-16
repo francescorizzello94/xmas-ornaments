@@ -1,3 +1,6 @@
+import redTextureImage from "./assets/red_texture.jpg";
+import blueTextureImage from "./assets/blue_texture.jpg";
+
 // Create a scene
 const scene = new THREE.Scene();
 
@@ -15,24 +18,25 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Create a geometry for the Christmas balls
-const geometry = new THREE.SphereGeometry(1.5, 32, 32);
-
 // Create a material and embed it with textures
 // Sub.1 - Red texture and material for left Christmas ball
-const redTexture = new THREE.TextureLoader().load("assets\\red_texture.jpg");
+const geometry = new THREE.SphereGeometry(1.5, 32, 32);
+
+const redTexture = new THREE.TextureLoader().load(redTextureImage);
 redTexture.wrapS = THREE.RepeatWrapping;
 redTexture.wrapT = THREE.RepeatWrapping;
 redTexture.repeat.set(2, 1);
+
 const redMaterial = new THREE.MeshLambertMaterial({ map: redTexture });
 
 // Sub.2 - Blue texture and material for right Christmas ball
-const blueTexture = new THREE.TextureLoader().load("assets\\blue_texture.jpg");
+
+const blueTexture = new THREE.TextureLoader().load(blueTextureImage);
 blueTexture.wrapS = THREE.RepeatWrapping;
 blueTexture.wrapT = THREE.RepeatWrapping;
 blueTexture.repeat.set(1.2, 1.1);
-const blueMaterial = new THREE.MeshLambertMaterial({ map: blueTexture });
 
+const blueMaterial = new THREE.MeshLambertMaterial({ map: blueTexture });
 
 // Create the Christmas balls
 const ball1 = new THREE.Mesh(geometry, redMaterial);
@@ -54,16 +58,16 @@ const gui = new dat.GUI();
 const ball1Controller = {
   x: ball1.position.x,
   y: ball1.position.y,
-  z: ball1.position.z
+  z: ball1.position.z,
 };
 const ball1Folder = gui.addFolder("Ball 1");
-ball1Folder.add(ball1Controller, "x", -2, 2).onChange(function(value) {
+ball1Folder.add(ball1Controller, "x", -2, 2).onChange(function (value) {
   ball1.position.x = value;
 });
-ball1Folder.add(ball1Controller, "y", -2, 2).onChange(function(value) {
+ball1Folder.add(ball1Controller, "y", -2, 2).onChange(function (value) {
   ball1.position.y = value;
 });
-ball1Folder.add(ball1Controller, "z", -2, 2).onChange(function(value) {
+ball1Folder.add(ball1Controller, "z", -2, 2).onChange(function (value) {
   ball1.position.z = value;
 });
 
@@ -71,16 +75,16 @@ ball1Folder.add(ball1Controller, "z", -2, 2).onChange(function(value) {
 const ball2Controller = {
   x: ball2.position.x,
   y: ball2.position.y,
-  z: ball2.position.z
+  z: ball2.position.z,
 };
 const ball2Folder = gui.addFolder("Ball 2");
-ball2Folder.add(ball2Controller, "x", -2, 2).onChange(function(value) {
+ball2Folder.add(ball2Controller, "x", -2, 2).onChange(function (value) {
   ball2.position.x = value;
 });
-ball2Folder.add(ball2Controller, "y", -2, 2).onChange(function(value) {
+ball2Folder.add(ball2Controller, "y", -2, 2).onChange(function (value) {
   ball2.position.y = value;
 });
-ball2Folder.add(ball2Controller, "z", -2, 2).onChange(function(value) {
+ball2Folder.add(ball2Controller, "z", -2, 2).onChange(function (value) {
   ball2.position.z = value;
 });
 
@@ -89,11 +93,11 @@ ball2Folder.add(ball2Controller, "z", -2, 2).onChange(function(value) {
 const rotationSpeed = 0.01;
 const rotationStopDelay = 1000;
 
-function rotationStart(ball) { 
+function rotationStart(ball) {
   ball.isRotating = true;
 }
 
-function rotationStop(ball) { 
+function rotationStop(ball) {
   ball.isRotating = false;
   ball.stopTime = Date.now();
 }
@@ -134,7 +138,7 @@ renderer.domElement.addEventListener("mousedown", (e) => {
     // Get the first intersected object
     const object = intersects[0].object;
 
-  // Check if the object is already rotating
+    // Check if the object is already rotating
     object.isRotating ? rotationStop(object) : rotationStart(object);
   }
 });
@@ -198,7 +202,6 @@ function updateBallRotation(ball) {
     }
   }
 }
-
 
 // Render the scene
 function render() {

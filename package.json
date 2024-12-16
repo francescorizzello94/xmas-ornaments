@@ -1,0 +1,30 @@
+{
+  "name": "xmas-ornaments",
+  "version": "1.0.0",
+  "description": "Xmas Ornaments for Three.js Journey Xmas Challenge 2024",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francescorizzello94/xmas-ornaments.git"
+  },
+  "keywords": [
+    "three.js",
+    "3D",
+    "javascript"
+  ],
+  "author": "Francesco Rizzello (https://github.com/francescorizzello94)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francescorizzello94/xmas-ornaments/issues"
+  },
+  "homepage": "https://github.com/francescorizzello94/xmas-ornaments#readme",
+  "devDependencies": {
+    "vite": "^6.0.3",
+    "vite-plugin-restart": "^0.4.2"
+  }
+}
